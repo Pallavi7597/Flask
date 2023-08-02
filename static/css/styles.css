@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-image: url("https://example.com/path/to/your/background-image.jpg"); /* Replace with your background image URL */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 10px;
+}
+
+.heading {
+    margin-bottom: 20px;
+    color: #3c2a8a; /* White text color */
+    font-size: 32px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+#result {
+    margin-top: 20px;
+    color: #FFFFFF; /* White text color */
+}
+
+input[type="number"],
+input[type="text"],
+button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4CAF50; /* Green background color */
+    color: #FFFFFF; /* White text color */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green background color on hover */
+}
+
+/* Additional styles for the result container */
+#result {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    border-radius: 5px;
+}

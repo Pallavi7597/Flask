@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shipping Rate Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Shipping Rate Calculator</h1>
+        <form id="shippingForm">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" step="0.1" required>
+
+            <label for="distance">Distance (km):</label>
+            <input type="number" id="distance" name="distance" required>
+
+            <label for="shipmentValue">Shipment Value ($):</label>
+            <input type="number" id="shipmentValue" name="shipmentValue" required>
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required>
+
+            <label for="pincode">Pincode:</label>
+            <input type="text" id="pincode" name="pincode" required>
+
+            <button type="submit">Calculate Shipping Rate</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+

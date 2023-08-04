@@ -5,16 +5,14 @@ FROM python:3.9
 WORKDIR /app
 
 # Copy the requirements.txt file into the container
-COPY requirements.txt .
+COPY . /app
 
 # Install the required Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the application files into the container
-COPY app.py .
+RUN pip install -r requirements.txt
 
 # Expose port 5000 for Flask
 EXPOSE 5000
 
 # Set the command to run the Flask application
-CMD ["python", "app.py"]
+ENTRYPOINT [ "python" ]
+CMD [ "app.py" ]

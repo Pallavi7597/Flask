@@ -1,35 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Shipping Rate Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Calculator</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1 class="heading">Shipping Rate Calculator</h1>
+        <img src="shipping-icon.png" alt="Shipping Icon" class="shipping-icon">
+        <h1 class="heading">Shipping Rates Calculator</h1>
         <form id="shippingForm">
-            <label for="weight">Weight (kg):</label>
-            <input type="number" id="weight" name="weight" step="0.1" required>
-
-            <label for="distance">Distance (km):</label>
-            <input type="number" id="distance" name="distance" required>
-
-            <label for="shipmentValue">Shipment Value ($):</label>
-            <input type="number" id="shipmentValue" name="shipmentValue" required>
-
+            <label for="weight">Package Weight (in kg):</label>
+            <input type="number" id="weight" step="1.0" placeholder="Enter weight" required>
             <label for="country">Country:</label>
-            <input type="text" id="country" name="country" required>
-
-            <label for="pincode">Pincode:</label>
-            <input type="text" id="pincode" name="pincode" required>
-
-            <button type="submit">Calculate Shipping Rate</button>
+            <select id="country" required>
+                <option value="" disabled selected>Select Country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="India">India</option>
+            </select>
+            <div class="location-container">
+                <div class="location-input">
+                  <label for="pickup">Pickup Pincode:</label>
+                  <input type="text" id="pickup" placeholder="Enter pickup pincode">
+                </div>
+                <div class="location-input">
+                    <label for="delivery">Delivery Pincode:</label>
+                    <input type="text" id="delivery" placeholder="Enter delivery pincode">
+                  </div>
+                </div>
+            <label for="distance">Distance (in km):</label>
+            <input type="number" id="distance" placeholder="Enter distance">
+            <label for="shipmentValue">Shipment Value:</label>
+            <input type="number" id="shipmentValue" placeholder="Enter shipment value">
+            <button type="button" onclick="calculateShipmentCost()">Calculate</button>
+            <button type="button" onclick="resetForm()">Reset</button>
         </form>
-
-        <div id="result"></div>
+        <div class="modal-overlay" id="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeModal()">&times;</span>
+              <div id="result">
+                <!-- The calculated shipment cost will be displayed here -->
+              </div>
+            </div>
     </div>
-
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
-

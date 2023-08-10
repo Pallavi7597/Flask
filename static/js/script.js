@@ -1,20 +1,46 @@
-document.getElementById('shippingForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+const currencySymbols = {
+    'USA': '$',
+    'India': '₹',
+    'Canada': 'CAD',
+    // Add more country codes and currency symbols here
+  };
 
-    const weight = document.getElementById('weight').value;
-    const destination = document.getElementById('destination').value;
+function calculateShipmentCost() {
+    const country = document.getElementById('country').value;
+    const weight = parseFloat(document.getElementById('weight').value);
+    const pickupPincode = document.getElementById('pickup').value;
+    const deliveryPincode = document.getElementById('delivery').value;
+    const distance = parseFloat(document.getElementById('distance').value);
+    const shipmentValue = parseFloat(document.getElementById('shipmentValue').value);
+  
+  
+    const baseCostPerKm = 0.1;
+    const baseCostPerKg = 1;
+    const baseCost = 10;
+  
+    const shipmentCost = baseCost + (distance * baseCostPerKm) + (weight * baseCostPerKg) + (shipmentValue * 0.05);
+  
+    const modal = document.getElementById('modal');
+    const resultElement = document.getElementById('result');
+      // Get the currency symbol based on the selected country
+    const currencySymbol = currencySymbols[country] || '';
+    const result = `Calculated Shipment Cost: ${currencySymbol}${shipmentCost.toFixed(2)}`;;
+  
+    resultElement.textContent = result;
+    modal.style.display = 'flex';
+  }
 
-    fetch('/calculate_shipping', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `weight=${encodeURIComponent(weight)}&destination=${encodeURIComponent(destination)}`
-    })
-    .then(response => response.json())
-    .then(data => {
-        const resultDiv = document.getElementById('result');
-        resultDiv.innerHTML = `Shipping rate to ${destination}: $${data.shipping_rate.toFixed(2)}`;
-    })
-    .catch(error => console.error('Error:', error));
-});
+  function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+  }
+  function resetForm() {
+    document.getElementById("weight").value = "";
+    document.getElementById("country").selectedIndex = 0;
+    document.getElementById("pickup").value = "";
+    document.getElementById("delivery").value = "";
+    document.getElementById("distance").value = "";
+    document.getElementById("shipmentValue").value = "";
+    document.getElementById("result").textContent = "";
+} 
+

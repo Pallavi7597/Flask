@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <img src="shipping-icon.png" alt="Shipping Icon" class="shipping-icon">
+        <img src="{{ url_for('static', filename='images/shippingicon.png') }}" alt="Shipping Image" class="shipping-icon">
         <h1 class="heading">Shipping Rates Calculator</h1>
         <form id="shippingForm">
             <label for="weight">Package Weight (in kg):</label>
